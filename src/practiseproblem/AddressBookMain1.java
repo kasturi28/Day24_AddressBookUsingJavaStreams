@@ -1,8 +1,11 @@
 package practiseproblem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AddressBookMain1 {
@@ -10,6 +13,14 @@ public class AddressBookMain1 {
 	 * Define arraylist of contact1
 	 */
 	private static ArrayList<Contact1> list = new ArrayList<Contact1>();
+	
+	 /**
+     * Call method to check entry in contact by searching state
+     */
+    private void sortByFirstname() {
+        List<Contact1> check = list.stream().sorted(Comparator.comparing(str->str.getFirstName())).collect(Collectors.toList());;
+        check.forEach(str -> System.out.println(str.toString()));
+    }
 	
     /**
      * Call method to check entry in contact by searching state
@@ -147,6 +158,7 @@ public class AddressBookMain1 {
             System.out.println("4. check duplicate entry");
             System.out.println("5. Search entry by city");
             System.out.println("6. Get count by city");
+            System.out.println("7. Get sort by first name"); 
             System.out.println("Enter Your Choice");
             int choice = sc.nextInt();
             switch (chooseAddressBook) {
@@ -163,6 +175,8 @@ public class AddressBookMain1 {
                         book1.searchPersonByCity();
                     }else if (choice == 6) {
                     	book1.getCountByCity();
+                    }else if (choice == 7){
+                    	book1.sortByFirstname();
                     }
                     break;
                 case 2:
@@ -178,6 +192,8 @@ public class AddressBookMain1 {
                         book2.searchPersonByCity();
                     }else if (choice == 6) {
                     	book2.getCountByCity();
+                    }else if (choice == 7){
+                    	book2.sortByFirstname();
                     }
                     break;
                 case 3:
@@ -193,6 +209,8 @@ public class AddressBookMain1 {
                         book3.searchPersonByCity();
                     }else if (choice == 6) {
                     	book3.getCountByCity();
+                    }else if (choice == 7){
+                    	book3.sortByFirstname();
                     }
                     break;
                 default:
